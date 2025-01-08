@@ -297,9 +297,6 @@ func _on_GifPopup_cancel_gif():
 
 func _on_InputPixels_text_changed(text):
 	pixels = int(text)
-	pixels = clamp(pixels, 12, 5000)
-	if (int(text) > 5000):
-		$HBoxContainer/Settings/VBoxContainer/InputPixels.text = str(pixels)
 	
 	var p = viewport_planet.get_child(0)
 	p.set_pixels(pixels)

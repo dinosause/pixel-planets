@@ -55,14 +55,6 @@ particles_anim_loop = false
 [sub_resource type="ViewportTexture" id="7"]
 viewport_path = NodePath("PlanetViewport")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ofrx"]
-resource_local_to_scene = true
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4bca"]
 resource_local_to_scene = true
 bg_color = Color(1, 1, 1, 1)
@@ -73,6 +65,14 @@ border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jpl7"]
+resource_local_to_scene = true
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ofrx"]
 resource_local_to_scene = true
 border_width_left = 2
 border_width_top = 2
@@ -117,6 +117,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -125,6 +126,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.831373)
@@ -192,9 +194,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1.0
-offset_right = -1.99998
-offset_bottom = 2.0
+offset_left = -3.0
+offset_top = 5.0
+offset_right = -4.99998
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
@@ -252,12 +255,13 @@ theme = ExtResource("2")
 min_value = 16.0
 value = 100.0
 
-[node name="InputPixels" type="LineEdit" parent="HBoxContainer/Settings/VBoxContainer"]
+[node name="InputPixels" type="SpinBox" parent="HBoxContainer/Settings/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2")
-text = "100"
-caret_blink = true
+min_value = 12.0
+max_value = 5000.0
+value = 128.0
 
 [node name="Control4" type="Control" parent="HBoxContainer/Settings/VBoxContainer"]
 custom_minimum_size = Vector2(0, 4)
@@ -310,9 +314,9 @@ theme_override_constants/separation = 2
 
 [node name="ColorPickerButton" parent="HBoxContainer/Settings/VBoxContainer/ColorButtonHolder" instance=ExtResource("8")]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_3ofrx")
 theme_override_styles/hover = SubResource("StyleBoxFlat_k4bca")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_8jpl7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3ofrx")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Settings/VBoxContainer"]
 layout_mode = 2
@@ -758,7 +762,7 @@ presets_visible = false
 [connection signal="text_changed" from="HBoxContainer/Settings/VBoxContainer/Seed/SeedText" to="." method="_on_LineEdit_text_changed"]
 [connection signal="pressed" from="HBoxContainer/Settings/VBoxContainer/Seed/Button" to="." method="_on_Button_pressed"]
 [connection signal="value_changed" from="HBoxContainer/Settings/VBoxContainer/SliderPixels" to="." method="_on_SliderPixels_value_changed"]
-[connection signal="text_changed" from="HBoxContainer/Settings/VBoxContainer/InputPixels" to="." method="_on_InputPixels_text_changed"]
+[connection signal="value_changed" from="HBoxContainer/Settings/VBoxContainer/InputPixels" to="." method="_on_InputPixels_text_changed"]
 [connection signal="value_changed" from="HBoxContainer/Settings/VBoxContainer/SliderRotation" to="." method="_on_SliderRotation_value_changed"]
 [connection signal="pressed" from="HBoxContainer/Settings/VBoxContainer/HBoxContainer2/ShouldDither" to="." method="_on_ShouldDither_pressed"]
 [connection signal="pressed" from="HBoxContainer/Settings/VBoxContainer/HBoxContainer/RandomizeColors" to="." method="_on_RandomizeColors_pressed"]
